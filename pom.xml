@@ -14,5 +14,6 @@
         <module>SSM001_LoginAdmin</module>
         <module>SSM002_LoginInterceptor</module>
         <module>SSM003_ManagerAdmin</module>
+        <module>SSM004_AddAdmin</module>
     </modules>
 </project>

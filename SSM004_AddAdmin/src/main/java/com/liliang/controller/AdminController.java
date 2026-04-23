@@ -15,8 +15,10 @@ import java.util.List;
 
 @Controller  //注入控制层的Bean
 public class AdminController {
+
     @Resource //注入Service层的对象
     private AdminService adminService;
+
 
     // 【0】向注册客户页面跳转
     @RequestMapping("/toRegister")   //设置访问路径
@@ -48,10 +50,10 @@ public class AdminController {
     public String loginAdmin(String username, String password, Model model, HttpServletRequest request) {
                                                                              //Model model对象存储数据到视图页面显示
                                                                              //HttpServletRequest request 设置拦截器
-        if (adminService.loginAdmin(username, password) > 0) {               //调用service层方法 userId
+        if (adminService.loginAdmin(username, password) > 0) {               //调用service层方法
             request.getSession().setAttribute("userId", username);     //HttpServletRequest request 设置拦截器
             model.addAttribute("message", username);
-            return "forward:toIndex";
+            return "redirect:/toIndex";
         } else {
             model.addAttribute("message", "温馨提示: 很遗憾，您登录失败！");
         }
@@ -63,4 +65,42 @@ public class AdminController {
     public String toIndexAdmin() {
         return "/index";
     }
+
+
+    //【2】查询客户列表
+    @RequestMapping("/findAllAdmin")
+    public String findAllAdmin(Model model) {
+        List<Admin> admin = adminService.findAllAdmin();
+        model.addAttribute("admin", admin);
+        //返回客户信息展示页面
+        return "/Admin_ManageAdmin";
+    }
+
+    // 【4】向添加客户页面跳转
+    @RequestMapping("/toAddAdmin")  //设置访问路径
+    public String toAddAdmin() {
+        return "/Admin_AddAdmin";
+    }
+
+    //【4】添加客户
+    @RequestMapping("/addAdmin")                                  //设置访问路径
+    public String addCustomer(Admin admin, Model model) {   //Model model对象存储数据到视图页面显示
+        String message;
+        //执行Service层中的创建方法，返回的是受影响的行数
+        int rows = adminService.addAdmin(admin);         //调用service层方法
+        if (rows > 0) {
+            message = "新用户" + admin.getUsername() + "添加成功！";
+        } else {
+            message = "新用户" + admin.getUsername() + "添加失败！";
+        }
+        //将添加结果信息保存
+        model.addAttribute("message", message);
+
+        //将添加后重新显示客户列表
+        //List<Customer> customer1 = customerService.findAllCustomer();
+        //model.addAttribute("customer", customer1);
+        return "redirect:/findAllAdmin";
+    }
+
+
 }
