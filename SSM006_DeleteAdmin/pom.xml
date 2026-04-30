@@ -10,10 +10,10 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>SSM004_AddAdmin</artifactId>
+    <artifactId>SSM006_DeleteAdmin</artifactId>
     <packaging>war</packaging>
 
-    <name>SSM004_AddAdmin Maven Webapp</name>
+    <name>SSM006_DeleteAdmin Maven Webapp</name>
     <url>http://www.example.com</url>
 
     <properties>

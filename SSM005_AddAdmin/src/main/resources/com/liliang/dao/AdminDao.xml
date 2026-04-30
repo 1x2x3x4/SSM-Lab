@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liliang.dao.AdminDao">
+    <!--
+          id = "接口中的方法名"
+          parameterType = "接口中传入方法的参数类型"
+          resultType = "返回实体类对象：包.类名"  处理结果集 自动封装
+          注意:sql语句后不要出现";"号
+              查询：select标签
+              增加：insert标签
+              修改：update标签
+              删除：delete标签
+      -->
+    <!-- 【0】顾客注册检测 -->
+    <select id="checkAdmin" parameterType="String" resultType="java.lang.Integer">
+		select count(*) from u_admin where username=#{username}
+	</select>
+
+    <!-- 【0】顾客注册 -->
+    <insert id="registerAdmin">
+		insert into u_admin(username,password)values(#{username},#{password})
+	</insert>
+
+    <!-- 【1】顾客登录 -->
+    <select id="loginAdmin" parameterType="String" resultType="java.lang.Integer">
+		select count(*) from u_admin where username=#{username} and
+		password=#{password}
+    </select>
+
+	<!-- 【3】查询所有顾客信息 -->
+	<select id="findAllAdmin" resultType="admin">
+      select * from u_admin
+    </select>
+
+    <!-- 【4】添加客户 -->
+    <insert id="addAdmin" parameterType="admin">
+      insert into u_admin(username,password,jobs,phone) values (#{username},#{password},#{jobs},#{phone})
+    </insert>
+
+    <!--【5】向更新客户信息页面跳转 -->
+    <select id="findAdminById" parameterType="int" resultType="admin">
+        select * from u_admin where id=#{id}
+    </select>
+
+    <!-- 【5】更新客户信息 -->
+    <update id="updateAdmin" parameterType="admin">
+        update u_admin
+        <set>
+            <if test="username !=null and username !=''">
+                username=#{username},
+            </if>
+            <if test="password !=null and password !=''">
+                password=#{password},
+            </if>
+            <if test="sex !=null and sex !=''">
+                sex=#{sex},
+            </if>
+            <if test="age !=null and age !=''">
+                age=#{age},
+            </if>
+            <if test="jobs !=null and jobs !=''">
+                jobs=#{jobs},
+            </if>
+            <if test="phone !=null and phone !=''">
+                phone=#{phone},
+            </if>
+            <if test="id_number !=null and id_number !=''">
+                id_number=#{id_number},
+            </if>
+            <if test="address !=null and address !=''">
+                address=#{address},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+</mapper>
+
+

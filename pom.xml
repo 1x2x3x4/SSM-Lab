@@ -7,7 +7,7 @@
     <groupId>com.liliang</groupId>
     <artifactId>SSM-Lab</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>../pom</packaging>
+    <packaging>pom</packaging>
 
     <modules>
         <module>SSM000_RegisterAdmin</module>
@@ -15,5 +15,8 @@
         <module>SSM002_LoginInterceptor</module>
         <module>SSM003_ManagerAdmin</module>
         <module>SSM004_AddAdmin</module>
+        <module>SSM005_AddAdmin</module>
+        <module>SSM006_DeleteAdmin</module>
+        <module>SSM007_DeleteAllAdmin</module>
     </modules>
 </project>
