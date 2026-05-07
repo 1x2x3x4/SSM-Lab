@@ -83,7 +83,7 @@
 1. 创建数据库：
 
 ```sql
-CREATE DATABASE ssm_admin DEFAULT CHARSET utf8;
+CREATE DATABASE [数据库名] DEFAULT CHARSET utf8;
 ```
 
 2. 导入 `DB` 文件夹中的 SQL 脚本。
@@ -91,9 +91,9 @@ CREATE DATABASE ssm_admin DEFAULT CHARSET utf8;
 3. 修改数据库连接配置：
 
 ```properties
-jdbc.url=jdbc:mysql://localhost:3306/ssm_admin
+jdbc.url=jdbc:mysql://localhost:3306/[数据库名]
 jdbc.username=root
-jdbc.password=123456
+jdbc.password=root
 ```
 
 ---
@@ -275,22 +275,6 @@ SpringBoot000_RegisterAdmin
 每个模块相互独立，方便单独学习与调试。
 
 ---
-
-# 常见问题
-
-## Maven 下载慢
-
-可配置阿里云镜像：
-
-```xml
-<mirror>
-    <id>aliyunmaven</id>
-    <mirrorOf>*</mirrorOf>
-    <name>aliyun</name>
-    <url>https://maven.aliyun.com/repository/public</url>
-</mirror>
-```
-
 ---
 
 ## 数据库连接失败
@@ -302,11 +286,6 @@ SpringBoot000_RegisterAdmin
 - 数据库是否存在
 
 ---
-
-# 作者
-
-Java Web 学习案例项目
-
 ---
 
 # License
