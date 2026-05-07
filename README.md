@@ -2,7 +2,7 @@
 
 ## 项目简介
 
-本项目为基于 SSM（Spring + SpringMVC + MyBatis）以及 SpringBoot 的后台管理系统功能案例合集，主要用于学习 Java Web 后端开发中的管理员模块实现。
+本项目为基于 SSM（Spring + SpringMVC + MyBatis）以及 SpringBoot 的后台管理系统功能案例合集
 
 项目包含：
 
