@@ -262,7 +262,6 @@ SpringBoot000_RegisterAdmin
 - 简化配置开发
 
 ---
----
 
 # 学习建议
 
@@ -275,7 +274,6 @@ SpringBoot000_RegisterAdmin
 每个模块相互独立，方便单独学习与调试。
 
 ---
----
 
 ## 数据库连接失败
 
@@ -285,7 +283,6 @@ SpringBoot000_RegisterAdmin
 - 用户名密码是否正确
 - 数据库是否存在
 
----
 ---
 
 # License
