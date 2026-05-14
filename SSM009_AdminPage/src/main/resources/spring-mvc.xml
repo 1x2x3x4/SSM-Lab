@@ -1,0 +1,39 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/mvc
+          http://www.springframework.org/schema/mvc/spring-mvc.xsd
+          http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 配置 Spring MVC 要扫描的包 -->
+    <context:component-scan base-package="com.liliang.controller"/>
+
+    <!--处理静态资源-->
+    <mvc:default-servlet-handler/>
+    <mvc:resources location="/admin01/js/" mapping="/admin01/js/**" />
+    <mvc:resources location="/admin01/css/" mapping="/admin01/css/**" />
+    <mvc:resources location="/admin01/images/" mapping="/admin01/images/**" />
+
+    <!-- 加载注解驱动 配置静态资源访问映射-->
+    <mvc:annotation-driven/>
+    <mvc:resources mapping="/admin01/images/**" location="/admin01/images/**"/>
+
+    <!-- 配置安全拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean id="securityInterceptor" class="com.liliang.interceptor.SecurityInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <!-- 配置视图解析器 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/admin01/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.liliang.dao.AdminDao">
+
+    <!-- 【0】管理员注册检测 -->
+    <select id="checkAdmin" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) from u_admin where username=#{username}
+    </select>
+
+    <!-- 【0】管理员注册 -->
+    <insert id="registerAdmin" parameterType="com.liliang.pojo.Admin">
+        insert into u_admin(username,password) values (#{username},#{password})
+    </insert>
+
+    <!-- 【1】管理员登录 -->
+    <select id="loginAdmin" parameterType="com.liliang.pojo.Admin" resultType="java.lang.Integer">
+        select count(*) from u_admin where username=#{username} and password=#{password}
+    </select>
+
+    <!-- 【2】用户分页管理统计 -->
+    <select id="countAdmin" parameterType="com.liliang.pojo.Admin" resultType="java.lang.Integer">
+        select count(*) from u_admin admin
+        <where>
+            <if test="username != null and username != ''">
+                and admin.username=#{username}
+            </if>
+            <if test="password != null and password != ''">
+                and admin.password=#{password}
+            </if>
+            <if test="sex != null and sex != ''">
+                and admin.sex=#{sex}
+            </if>
+            <if test="age != null">
+                and admin.age=#{age}
+            </if>
+            <if test="jobs != null and jobs != ''">
+                and admin.jobs=#{jobs}
+            </if>
+            <if test="phone != null and phone != ''">
+                and admin.phone=#{phone}
+            </if>
+            <if test="address != null and address != ''">
+                and admin.address=#{address}
+            </if>
+        </where>
+    </select>
+
+    <!-- 【2】用户分页查询 -->
+    <select id="findAllAdmin" parameterType="com.liliang.pojo.Admin" resultType="com.liliang.pojo.Admin">
+        select * from u_admin admin
+        <where>
+            <if test="username != null and username != ''">
+                and admin.username=#{username}
+            </if>
+            <if test="password != null and password != ''">
+                and admin.password=#{password}
+            </if>
+            <if test="sex != null and sex != ''">
+                and admin.sex=#{sex}
+            </if>
+            <if test="age != null">
+                and admin.age=#{age}
+            </if>
+            <if test="jobs != null and jobs != ''">
+                and admin.jobs=#{jobs}
+            </if>
+            <if test="phone != null and phone != ''">
+                and admin.phone=#{phone}
+            </if>
+            <if test="address != null and address != ''">
+                and admin.address=#{address}
+            </if>
+        </where>
+        limit #{start},#{pageSize}
+    </select>
+
+    <!-- 【4】添加管理员 -->
+    <insert id="addAdmin" parameterType="com.liliang.pojo.Admin">
+        insert into u_admin(username,password,jobs,phone)
+        values (#{username},#{password},#{jobs},#{phone})
+    </insert>
+
+    <!--【5】根据ID查询 -->
+    <select id="findAdminById" parameterType="java.lang.Integer" resultType="com.liliang.pojo.Admin">
+        select * from u_admin where id=#{id}
+    </select>
+
+    <!-- 【5】更新客户信息 -->
+    <update id="updateAdmin" parameterType="com.liliang.pojo.Admin">
+        update u_admin
+        <set>
+            <if test="username != null and username != ''">
+                username=#{username},
+            </if>
+            <if test="password != null and password != ''">
+                password=#{password},
+            </if>
+            <if test="sex != null and sex != ''">
+                sex=#{sex},
+            </if>
+            <if test="age != null">
+                age=#{age},
+            </if>
+            <if test="jobs != null and jobs != ''">
+                jobs=#{jobs},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone=#{phone},
+            </if>
+            <if test="address != null and address != ''">
+                address=#{address}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <!-- 【6】删除客户信息 -->
+    <delete id="deleteAdmin" parameterType="java.lang.Integer">
+       delete from u_admin where id=#{id}
+    </delete>
+
+    <!-- 【7】批量删除用户 -->
+    <delete id="deleteAdminByIds" parameterType="java.util.List">
+        delete from u_admin where id in
+        <foreach collection="list" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <!-- 【8】根据姓名或职业查询 -->
+    <select id="findAdminByNameOrJobs" parameterType="com.liliang.pojo.Admin" resultType="com.liliang.pojo.Admin">
+        select * from u_admin
+        <where>
+            <choose>
+                <when test="username !=null and username !=''">
+                    and username like concat('%',#{username},'%')
+                </when>
+                <when test="jobs !=null and jobs !=''">
+                    and jobs=#{jobs}
+                </when>
+                <otherwise>
+                    and phone is not null
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+</mapper>

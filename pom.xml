@@ -20,5 +20,7 @@
         <module>SSM007_DeleteAllAdmin</module>
         <module>SSM008_FindAdmin</module>
         <module>SpringBoot000_RegisterAdmin</module>
+        <module>SSM009_AdminPage</module>
+        <module>SSM010_AdminAnalysis</module>
     </modules>
 </project>

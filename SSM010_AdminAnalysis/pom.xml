@@ -3,7 +3,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
   <parent>
     <groupId>com.liliang</groupId>
     <artifactId>SSM-Lab</artifactId>
@@ -11,10 +10,10 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <artifactId>SSM001_LoginAdmin</artifactId>
+  <artifactId>SSM010_AdminAnalysis</artifactId>
   <packaging>war</packaging>
 
-  <name>SSM001_LoginAdmin Maven Webapp</name>
+  <name>SSM010_AdminAnalysis Maven Webapp</name>
   <url>http://www.example.com</url>
 
   <properties>

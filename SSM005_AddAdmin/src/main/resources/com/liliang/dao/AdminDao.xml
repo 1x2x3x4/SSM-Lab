@@ -14,38 +14,37 @@
               删除：delete标签
       -->
     <!-- 【0】顾客注册检测 -->
-    <select id="checkAdmin" parameterType="String" resultType="java.lang.Integer">
+    <select id="checkAdmin" parameterType="java.lang.String" resultType="java.lang.Integer">
 		select count(*) from u_admin where username=#{username}
 	</select>
 
     <!-- 【0】顾客注册 -->
-    <insert id="registerAdmin">
-		insert into u_admin(username,password)values(#{username},#{password})
+    <insert id="registerAdmin" parameterType="com.liliang.pojo.Admin">
+		insert into u_admin(username,password) values(#{username},#{password})
 	</insert>
 
     <!-- 【1】顾客登录 -->
-    <select id="loginAdmin" parameterType="String" resultType="java.lang.Integer">
-		select count(*) from u_admin where username=#{username} and
-		password=#{password}
+    <select id="loginAdmin" parameterType="com.liliang.pojo.Admin" resultType="java.lang.Integer">
+		select count(*) from u_admin where username=#{username} and password=#{password}
     </select>
 
-	<!-- 【3】查询所有顾客信息 -->
-	<select id="findAllAdmin" resultType="admin">
+    <!-- 【3】查询所有顾客信息 -->
+    <select id="findAllAdmin" resultType="com.liliang.pojo.Admin">
       select * from u_admin
     </select>
 
     <!-- 【4】添加客户 -->
-    <insert id="addAdmin" parameterType="admin">
+    <insert id="addAdmin" parameterType="com.liliang.pojo.Admin">
       insert into u_admin(username,password,jobs,phone) values (#{username},#{password},#{jobs},#{phone})
     </insert>
 
     <!--【5】向更新客户信息页面跳转 -->
-    <select id="findAdminById" parameterType="int" resultType="admin">
+    <select id="findAdminById" parameterType="java.lang.Integer" resultType="com.liliang.pojo.Admin">
         select * from u_admin where id=#{id}
     </select>
 
     <!-- 【5】更新客户信息 -->
-    <update id="updateAdmin" parameterType="admin">
+    <update id="updateAdmin" parameterType="com.liliang.pojo.Admin">
         update u_admin
         <set>
             <if test="username !=null and username !=''">
@@ -57,7 +56,7 @@
             <if test="sex !=null and sex !=''">
                 sex=#{sex},
             </if>
-            <if test="age !=null and age !=''">
+            <if test="age !=null">
                 age=#{age},
             </if>
             <if test="jobs !=null and jobs !=''">
@@ -66,16 +65,11 @@
             <if test="phone !=null and phone !=''">
                 phone=#{phone},
             </if>
-            <if test="id_number !=null and id_number !=''">
-                id_number=#{id_number},
-            </if>
             <if test="address !=null and address !=''">
-                address=#{address},
+                address=#{address}
             </if>
         </set>
         where id=#{id}
     </update>
 
 </mapper>
-
-
