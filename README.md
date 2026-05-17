@@ -3,17 +3,6 @@
 ## 项目简介
 本项目为基于 SSM（Spring + SpringMVC + MyBatis）以及 SpringBoot 的后台管理系统功能案例合集
 
-项目包含：
-
-- 管理员注册
-- 管理员登录
-- 登录拦截器
-- 管理员增删改查
-- SpringBoot 版本实现
-- MyBatis 数据库操作
-- Maven 多模块管理
----
-
 # 项目结构
 
 ```text
