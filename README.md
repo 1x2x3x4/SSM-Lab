@@ -1,7 +1,6 @@
 # SSM & SpringBoot 后台管理系统案例合集
 
 ## 项目简介
-
 本项目为基于 SSM（Spring + SpringMVC + MyBatis）以及 SpringBoot 的后台管理系统功能案例合集
 
 项目包含：
@@ -13,14 +12,6 @@
 - SpringBoot 版本实现
 - MyBatis 数据库操作
 - Maven 多模块管理
-
-适合：
-
-- Java Web 初学者
-- SSM 框架学习
-- SpringBoot 入门
-- 后台管理系统功能练习
-
 ---
 
 # 项目结构
