@@ -133,7 +133,7 @@ Open -> 选择项目目录
 示例：
 
 ```text
-http://localhost:8080/
+http://localhost:端口号/
 ```
 
 ---
@@ -145,8 +145,3 @@ http://localhost:8080/
 - 用户名密码是否正确
 - 数据库是否存在
 
----
-
-# License
-
-本项目仅供学习交流使用。
